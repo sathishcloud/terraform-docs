@@ -1,0 +1,293 @@
+================================
+---------[TERRAFORM]------------v1.3.7 --> 1.6.6
+================================
+
+AWS DEVOPS -> Cloud formation
+
+DevOps Generic -> Terraform -> Hasicorp 
+‎
+IAC -> Infrastructure As code
+
+HCL -> Hasicorp configuration language
+
+================
+DEVOPS TERRAFORM
+================
+
+ -devops tool 						https://digital.ai/learn/devops-periodic-table/
+ -configuration automation
+ -hashicorp terraform 				(devops)
+ -REUSABLE					        multiple environment
+ -HCL 							HASI CORP LANGUAGE
+ -OPEN SOURCE					[FREE]
+ -Extension --- 					.tf
+
+
+--- *INFRASTRUCTURE* ---
+
+HOUSE/HOME
+
+	- CEMENT, BREAKS, SAND, STEEL ROD,,,,.
+
+RUNNING APPLICATION SET OF SERVICES
+
+AWS
+
+	- EC2/S3/VPC/RDS/ELB/IAM/ASG ----> INFRA AS A SERVICES
+
+
+
+ADVANTAGES:
+
+TIME SAVING ENV:- (dev,test,prod,pre prod,dr,ct) --*code*--
+reproduction of infrasturcture‎
+
+
+
+ENVIRONMENT IS A SET OF SERVICE
+
+
+
+
+
+     ENVIRONMENT
+	-DEV									"			-->[ec2/s3/vpc/rds/elb/iam/asg] 		-CODE FB 	(esaly run application "FB")
+	-TESTING									"			-->[ec2/s3/vpc/rds/elb/iam/asg] 		-CODE FB	(esaly run application "FB")
+	-QUALITY									"			-->[ec2/s3/vpc/rds/elb/iam/asg] 		-CODE FB	(esaly run application "FB")
+	-CAT/UAT(coustomer acc TES/user acc)			"			-->[ec2/s3/vpc/rds/elb/iam/asg] 		-CODE FB	(esaly run application "FB")
+	-pre-prod								"			-->[ec2/s3/vpc/rds/elb/iam/asg] 		-CODE FB	(esaly run application "FB")
+	-PR--------									"			-->[ec2/s3/vpc/rds/elb/iam/asg]		-CODE FB	(esaly run application "FB")
+	-DR										"			-->[ec2/s3/vpc/rds/elb/iam/asg]		-CODE FB	(esaly run application "FB")		
+
+
+
+how much time you have take to  create this set of environmet service ?
+
+EC2/S3/VPC/RDS/ELB/IAM/ASG--
+
+100 SERVERS 
+	- LINUX
+	- VPC
+	- s3			
+	- rds
+	- elb
+	- iam
+	- asg
+
+ADVANTAGES OF IAC?
+	- REUSEABLE
+	- TIME, COST, EFFORT REDUCE
+	- CONFIGURATION AUTOMATION
+	- BUILD our INFRASTRUCTURES 
+=================================================================
+
+TERRAFORM --> VPC
+
+  --------VPC----------
+
+[Step to create and set up a vpc in AWS environment: ]
+======================================================
+
+1. Create a own VPC.
+2. Create a public and private subnet for different 
+   available AZs by assigning different CIDR blocks.
+3. Create internet gateway & attach it to the VPC.
+4. Create routing table [RT], One as public & 
+   One as private associate the appropirate subnet to it.
+5. Edit the public route table's and map the IGW,
+   not the private and leave it as it is.
+6. Create Two Security Groups - One for public [Edit the inbound 
+   rules with RDP, HTTP/HTTPS, SSH and map 0.0.0.0/0 in the source]
+   & One for private [ Edit the inbound rules and map the SG of public in the source].
+7. Create Two EC2s one in  public and one in private subnets with proper subnet with proper security Groups.
+8. Login into public and check the internet connection.
+9. Create NAT gateway with new Elastic IP for the internet connection in the private subnet.
+10. Now login into the private EC2 and verify the connectivity and internet facility.
+
+
+
+TERRFORM CREATION:- v1.3.7 (latest version)
+-----------------
+
+
+	-https://developer.hashicorp.com/terraform/downloads
+	-https://www.terraform.io/
+	
+
+
+
+INSTALLATION
+------------
+
+	- macos/windows/linux/freebsd/openbsd/solaris
+
+linux
+	
+amazon linux - 		sudo yum install -y yum-utils shadow-utils
+					sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+					sudo yum -y install terraform
+AMD 		 -		wget https://releases.hashicorp.com/terraform/1.3.7/terraform_1.3.7_linux_amd64.zip
+
+
+ubuntu linux -		wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+					echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+					sudo apt update && sudo apt install terraform
+	
+
+
+========================================================================
+
+VPC - CREATION IN TERRAFORM (IAAC) - v1.3.7
+===========================================
+
+
+create server
+	-amazon linux
+	-launch instance
+
+	#sudo -i
+	#cd opt
+	#wget https://releases.hashicorp.com/terraform/1.3.7/terraform_1.3.7_linux_amd64.zip
+	#ll
+	#unzip terraform
+	#ll
+	#terraform --version
+	#cp terraform /usr/local/bin
+	#terraform --version [ now shows version ]
+ 
+	#vi environment/any file name .tf
+	
+
+
+
+=====================================================
+
+  
+r53,elb,asg,ec2,rds,s3,acm	--> code 3hours
+
+
+10min
+10min
+10min
+5min
+10min
+15min
+5min
+
+1hour 5min
+
+1
+
+
+
+
+ssh -i ####.pem ubuntu@0.0.0.0
+
+
+time
+cost 
+effort
+
+
+application 
+
+
+- /r53/elb/asg/ec2/ec2 adv/rds/s3/iam
+
+30min
+20min
+5min
+10mints
+15min
+5mints
+5mints
+
+---------------
+90mints
+
+fb application
+
+dev - environment = /r53/elb/asg/ec2/ec2 adv/rds/s3/iam
+
+test - environment = /r53/elb/asg/ec2/ec2 adv/rds/s3/iam
+
+quality - en
+
+cat/uat -
+
+pre prod -
+
+prod -
+
+diasterrecovery -
+
+code - apply/reuseable
+
+
+
+
+
+Application 
+
+
+R53 --> ELB --> ASG --> EC2 --> VPC --> RDS --> S3 --> IAM = 1hour
+R53 --> ELB --> ASG --> EC2 --> VPC --> RDS --> S3 --> IAM = 1hour
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
